@@ -15,6 +15,7 @@ Plataforma multi-site que hospeda landing pages independentes sob um mesmo deplo
 | **Sítio Mendes** — Eventos, casamentos & lazer | `sitiomendes.siteslink.com.br` | HTML5, CSS3 (Outfit) |
 | **William Auto Mecânica** — Oficina premium | `williammecanica.siteslink.com.br` | HTML5, CSS3 (Montserrat) |
 | **Erick Estillo** — Martelinho de ouro & funilaria | `erickestillo.siteslink.com.br` | HTML5, CSS3 (Montserrat) |
+| **Thaina & Guilherme** — Convite interativo | `thainaguilherme.siteslink.com.br` | HTML5, CSS3, JavaScript |
 
 ---
 
@@ -28,6 +29,12 @@ siteslink/
 ├── assets/
 │   ├── css/base.css            # Reset, WhatsApp FAB, animações compartilhadas
 │   └── js/animations.js        # IntersectionObserver, parallax, reveal
+├── convites/
+│   ├── README.md               # Convenções para novos convites
+│   └── thaina-guilherme/
+│       ├── index.html
+│       ├── styles.css
+│       └── script.js
 ├── cris-doces/
 │   ├── index.html
 │   ├── style.css
@@ -65,6 +72,7 @@ O Netlify serve todas as páginas de um único deploy. O arquivo `_redirects` fa
 
 ```
 https://crisdoces.siteslink.com.br/*  →  /cris-doces/:splat
+https://thainaguilherme.siteslink.com.br/*  →  /convites/thaina-guilherme/:splat
 ```
 
 O visitante acessa `crisdoces.siteslink.com.br` e vê a página como se fosse um site independente.
@@ -114,6 +122,16 @@ http://<seu-ip>:3000/erick-estillo/
    ```
 5. Configurar o subdomínio no painel DNS e no Netlify
 6. Adicionar o card no `index.html` (hub)
+
+### Adicionar um convite
+
+1. Criar `convites/<nome-dos-noivos>/` com `index.html`, `styles.css` e `script.js`.
+2. Manter conteúdo, estilos e interações específicos daquele convite dentro da própria pasta.
+3. Adicionar em `_redirects` uma regra apontando o subdomínio para `convites/<nome-dos-noivos>`.
+4. Configurar o subdomínio no DNS e no Netlify.
+
+O convite de Thaina e Guilherme pode ser testado localmente em
+`http://localhost:3000/convites/thaina-guilherme/`.
 
 ---
 
