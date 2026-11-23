@@ -7,6 +7,7 @@
     <meta name="description" content="Convite de casamento de Thaina e Guilherme. 19 de dezembro de 2026, às 12h.">
     <title>Thaina &amp; Guilherme | Nosso casamento</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="gifts.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -99,29 +100,34 @@
       <section class="guest-links" aria-labelledby="guest-title">
         <p class="eyebrow" id="guest-title">CADA DETALHE, COM CARINHO</p>
         <p class="links-description">Tudo o que você precisa para celebrar com a gente.</p>
+        <p class="actions-hint">Toque nos cartões para descobrir os detalhes</p>
         <div class="actions">
           <a class="action" href="https://www.google.com/maps?cid=6335306937186270697" target="_blank" rel="noopener noreferrer" data-action="directions" aria-haspopup="dialog">
             <span class="action-icon"><svg aria-hidden="true"><use href="#pin"/></svg></span>
             <span>Como chegar</span>
             <small>Mapa e opções de trajeto</small>
+            <span class="card-pointer" aria-hidden="true">☟</span>
           </a>
           <button class="action" type="button" data-action="gifts">
             <span class="action-icon"><svg aria-hidden="true"><use href="#gift"/></svg></span>
             <span>Lista de presentes</span>
-            <small>Em breve</small>
+            <small>Chá de cozinha</small>
+            <span class="card-pointer" aria-hidden="true">☟</span>
           </button>
           <button class="action" type="button" data-action="details">
             <span class="action-icon"><svg aria-hidden="true"><use href="#info"/></svg></span>
             <span>Informações gerais</span>
             <small>Convites e programação</small>
+            <span class="card-pointer" aria-hidden="true">☟</span>
           </button>
           <a class="action" href="https://forms.gle/xw1zApoaLJ9hm52h6" target="_blank" rel="noopener noreferrer" data-action="rsvp" aria-haspopup="dialog">
             <span class="action-icon"><svg aria-hidden="true"><use href="#check"/></svg></span>
             <span>Confirmar presença</span>
             <small>Até 30/11/2026</small>
+            <span class="card-pointer" aria-hidden="true">☟</span>
           </a>
         </div>
-        <noscript><p class="noscript-note">Confirme sua presença até 30/11/2026. As confirmações não realizadas até essa data serão consideradas como ausência, e a vaga será liberada para a organização final do evento. Lembrando que a nossa lista está fechada para 60 convidados previamente definidos, sem possibilidade de inclusões. Contamos com sua compreensão e colaboração!</p><p class="noscript-note">Ative o JavaScript para abrir os detalhes. A lista de presentes ainda não está disponível.</p></noscript>
+        <noscript><p class="noscript-note">Confirme sua presença até 30/11/2026. As confirmações não realizadas até essa data serão consideradas como ausência, e a vaga será liberada para a organização final do evento. Lembrando que a nossa lista está fechada para 60 convidados previamente definidos, sem possibilidade de inclusões. Contamos com sua compreensão e colaboração!</p><p class="noscript-note">Ative o JavaScript para abrir os detalhes. A lista de presentes também precisa de JavaScript.</p></noscript>
       </section>
 
       <footer>
@@ -189,6 +195,16 @@
             </li>
           </ol>
         </section>
+        <section class="general-section" aria-labelledby="drinks-title">
+          <h3 id="drinks-title">Bebidas alcoólicas*</h3>
+          <div class="invitation-guidance">
+            <p>As bebidas alcoólicas não estão inclusas na celebração. Caso deseje consumir, pedimos que traga sua bebida em um cooler individual.</p>
+          </div>
+        </section>
+      </div>
+      <div id="gifts-content" hidden>
+        <p class="gift-intro">Escolha um presente, compre pelo link e toque em “Já escolhi” para avisar os noivos. Assim marcamos como indisponível e evitamos repetições.</p>
+        <ul class="gift-list"></ul>
       </div>
       <div id="directions-content" hidden>
         <div class="map-switch" role="group" aria-label="Escolher o local exibido no mapa">
@@ -230,6 +246,14 @@
         </section>
       </div>
       <button class="dialog-ok" type="button">Entendi</button>
+    </dialog>
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+      <h2 id="confirm-title">Confirmar escolha</h2>
+      <p id="confirm-text"></p>
+      <form method="dialog" class="confirm-actions">
+        <button class="confirm-cancel" value="cancel">Cancelar</button>
+        <button class="dialog-ok" value="ok" autofocus>Confirmar</button>
+      </form>
     </dialog>
   </body>
 </html>
