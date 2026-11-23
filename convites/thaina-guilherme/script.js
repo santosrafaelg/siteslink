@@ -12,6 +12,8 @@ const dialogOk = document.querySelector(".dialog-ok");
 const rsvpContent = document.querySelector("#rsvp-content");
 const generalContent = document.querySelector("#general-content");
 const directionsContent = document.querySelector("#directions-content");
+const giftsContent = document.querySelector("#gifts-content");
+const giftList = document.querySelector(".gift-list");
 const locationMap = document.querySelector("#location-map");
 const mapButtons = document.querySelectorAll("[data-map]");
 
@@ -74,13 +76,153 @@ const messages = {
   },
   gifts: {
     title: "Lista de presentes",
-    text: "A lista de presentes ainda não está disponível. Assim que o link for definido, você poderá acessá-lo por aqui.",
+    text: "Sugestões para o nosso chá de cozinha. Sua presença é o maior presente, mas, se quiser nos presentear, aqui vão algumas ideias.",
   },
   details: {
     title: "Informações gerais",
     text: "Alguns detalhes para aproveitarmos juntos esse momento.",
   },
 };
+
+function confirmGift(gift) {
+  const confirmDialog = document.querySelector("#confirm-dialog");
+  confirmDialog.querySelector("#confirm-text").textContent = `Confirmar a escolha de “${gift.name}”? Vamos avisar os noivos.`;
+  return new Promise((resolve) => {
+    confirmDialog.addEventListener("close", () => resolve(confirmDialog.returnValue === "ok"), { once: true });
+    confirmDialog.returnValue = "";
+    confirmDialog.showModal();
+  });
+}
+
+async function notifyGift(gift, button) {
+  if (!(await confirmGift(gift))) return;
+  button.disabled = true;
+  button.textContent = "Enviando…";
+  try {
+    // text/plain mantém a requisição "simples" e evita a pré-verificação CORS, que o Apps Script não responde.
+    const response = await fetch(giftNotifyUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ gift: gift.name }),
+    });
+    const result = (await response.text()).trim();
+    if (!response.ok || !["ok", "já avisado"].includes(result)) throw new Error(result);
+    button.textContent = "Aviso enviado. Obrigado!";
+  } catch {
+    button.disabled = false;
+    button.textContent = "Não foi possível enviar. Tentar de novo";
+  }
+}
+
+function renderGifts() {
+  giftList.replaceChildren(...gifts.map((gift) => {
+    const item = document.createElement("li");
+    item.className = "gift-item";
+    const info = document.createElement("div");
+    const name = document.createElement("strong");
+    name.textContent = gift.name;
+    info.append(name);
+    const detail = gift.taken
+      ? "Já escolhido"
+      : gift.note || (gift.url ? "" : "Link em breve");
+    if (detail) {
+      const small = document.createElement("small");
+      small.textContent = detail;
+      info.append(small);
+    }
+    item.append(info);
+
+    if (gift.taken) {
+      item.classList.add("is-taken");
+    } else if (gift.url) {
+      const actions = document.createElement("div");
+      actions.className = "gift-actions";
+      const store = document.createElement("a");
+      store.href = gift.url;
+      store.target = "_blank";
+      store.rel = "noopener noreferrer";
+      store.textContent = "Ver na loja";
+      store.setAttribute("aria-label", `Ver na loja: ${gift.name}`);
+      actions.append(store);
+      if (giftNotifyUrl) {
+        const chosen = document.createElement("button");
+        chosen.type = "button";
+        chosen.className = "gift-chosen";
+        chosen.textContent = "Já escolhi";
+        chosen.setAttribute("aria-label", `Já escolhi ${gift.name}`);
+        chosen.addEventListener("click", () => notifyGift(gift, chosen));
+        actions.append(chosen);
+      }
+      item.append(actions);
+    }
+    return item;
+  }));
+}
+
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (quoted) {
+      if (char === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (char === '"') quoted = false;
+      else cell += char;
+    } else if (char === '"') quoted = true;
+    else if (char === ",") { row.push(cell); cell = ""; }
+    else if (char === "\n" || char === "\r") {
+      if (char === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell);
+      cell = "";
+      rows.push(row);
+      row = [];
+    } else cell += char;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
+function normalize(value) {
+  return value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function giftsFromCsv(text) {
+  const [header, ...rows] = parseCsv(text);
+  const column = (name) => header.findIndex((title) => normalize(title) === name);
+  const [nameIndex, urlIndex, statusIndex, noteIndex] =
+    ["presente", "link", "status", "observacao"].map(column);
+  if (nameIndex < 0) throw new Error("Coluna 'presente' não encontrada");
+  return rows
+    .filter((cells) => (cells[nameIndex] || "").trim())
+    .map((cells) => {
+      const url = (cells[urlIndex] || "").trim();
+      return {
+        name: cells[nameIndex].trim(),
+        url: /^https?:\/\//.test(url) ? url : null,
+        taken: normalize(cells[statusIndex] || "").startsWith("indisponivel"),
+        note: (cells[noteIndex] || "").trim(),
+      };
+    });
+}
+
+renderGifts();
+if (giftSheetUrl) {
+  fetch(giftSheetUrl, { cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      return response.text();
+    })
+    .then((text) => {
+      const sheetGifts = giftsFromCsv(text);
+      if (sheetGifts.length) {
+        gifts.splice(0, gifts.length, ...sheetGifts);
+        renderGifts();
+      }
+    })
+    .catch(() => {});
+}
 
 invitation.hidden = true;
 cover.hidden = false;
@@ -115,7 +257,9 @@ document.querySelectorAll("[data-action]").forEach((button) => {
     const showingDirections = button.dataset.action === "directions";
     const showingGeneral = button.dataset.action === "details";
     const showingRsvp = button.dataset.action === "rsvp";
+    const showingGifts = button.dataset.action === "gifts";
     dialogText.hidden = showingDirections;
+    giftsContent.hidden = !showingGifts;
     directionsAddress.hidden = !showingDirections;
     dialog.setAttribute("aria-describedby", showingDirections ? "directions-address" : "dialog-text");
     dialogEyebrow.textContent = showingGeneral ? "NOSSO DIA • 19.12.2026" : "THAINA & GUILHERME";
@@ -123,7 +267,7 @@ document.querySelectorAll("[data-action]").forEach((button) => {
     rsvpContent.hidden = !showingRsvp;
     generalContent.hidden = !showingGeneral;
     directionsContent.hidden = !showingDirections;
-    dialog.classList.toggle("general-dialog", showingGeneral || showingRsvp);
+    dialog.classList.toggle("general-dialog", showingGeneral || showingRsvp || showingGifts);
     dialog.classList.toggle("rsvp-dialog", showingRsvp);
     dialog.classList.toggle("directions-dialog", showingDirections);
     dialog.showModal();
