@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title description">
+  <title id="title">Cartão de convite de Thaina e Guilherme</title>
+  <desc id="description">Convite para o casamento em 19 de dezembro de 2026, às 12h. Escaneie o QR code ou acesse thainaguilherme.siteslink.com.br.</desc>
+  <style>
+    @font-face {
+      font-family: "Great Vibes";
+      src: url("../../assets/fonts/GreatVibes-Regular.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+    }
+  </style>
+  <rect width="1080" height="1350" fill="#f6f3ec"/>
+  <path d="M104 42h872c39 0 62 23 62 62v1142c0 39-23 62-62 62H104c-39 0-62-23-62-62V104c0-39 23-62 62-62Z" fill="none" stroke="#c9cbbb" stroke-width="1.5"/>
+  <path d="M110 52h860c35 0 56 21 56 56v1126c0 35-21 56-56 56H110c-35 0-56-21-56-56V108c0-35 21-56 56-56Z" fill="none" stroke="#c9cbbb" stroke-opacity=".48"/>
+  <g transform="translate(830 145) rotate(170) scale(.8)" fill="none" stroke="#929b7e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+    <path d="M18 106C74 87 135 71 218 17M82 83C81 60 70 38 55 20M128 62C140 41 145 24 143 8M162 44C180 45 199 46 224 38"/>
+    <path d="M48 96C34 91 27 79 24 67C41 69 52 80 48 96ZM67 89C70 72 79 65 94 59C97 74 83 88 67 89ZM88 80C69 77 59 66 57 52C75 53 88 64 88 80ZM108 72C107 53 119 38 131 33C136 48 124 67 108 72ZM134 59C149 59 163 64 170 75C155 80 138 74 134 59ZM159 45C157 26 165 14 178 7C185 23 174 39 159 45ZM181 33C195 32 212 23 218 9C200 8 186 20 181 33ZM76 53C59 49 47 37 44 21C60 23 73 37 76 53ZM141 31C127 22 123 11 127 2C141 9 147 20 141 31ZM194 44C205 51 219 54 232 49C223 36 206 35 194 44Z"/>
+  </g>
+  <g transform="translate(75 1195) scale(.8)" fill="none" stroke="#929b7e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+    <path d="M18 106C74 87 135 71 218 17M82 83C81 60 70 38 55 20M128 62C140 41 145 24 143 8M162 44C180 45 199 46 224 38"/>
+    <path d="M48 96C34 91 27 79 24 67C41 69 52 80 48 96ZM67 89C70 72 79 65 94 59C97 74 83 88 67 89ZM88 80C69 77 59 66 57 52C75 53 88 64 88 80ZM108 72C107 53 119 38 131 33C136 48 124 67 108 72ZM134 59C149 59 163 64 170 75C155 80 138 74 134 59ZM159 45C157 26 165 14 178 7C185 23 174 39 159 45ZM181 33C195 32 212 23 218 9C200 8 186 20 181 33ZM76 53C59 49 47 37 44 21C60 23 73 37 76 53ZM141 31C127 22 123 11 127 2C141 9 147 20 141 31ZM194 44C205 51 219 54 232 49C223 36 206 35 194 44Z"/>
+  </g>
+
+  <g text-anchor="middle" fill="#373b30">
+    <text x="540" y="215" fill="#697354" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">UM CONVITE ESPECIAL PARA VOCÊ</text>
+    <text x="540" y="350" font-family="'Great Vibes', cursive" font-size="118" font-weight="400">Thaina e Guilherme</text>
+    <path d="M510 405h60" stroke="#c9cbbb" stroke-width="1.5"/>
+    <text x="540" y="478" fill="#697354" font-family="Arial, sans-serif" font-size="21" letter-spacing="3">19 DE DEZEMBRO DE 2026 · ÀS 12H</text>
+    <text x="540" y="580" font-family="Baskerville, 'Palatino Linotype', Georgia, serif" font-size="34" font-style="italic">
+      <tspan x="540">Será uma alegria celebrar</tspan>
+      <tspan x="540" dy="48">esse dia especial com você.</tspan>
+    </text>
+  </g>
+
+  <rect x="402" y="690" width="276" height="276" rx="3" fill="#fff" stroke="#c9cbbb" stroke-width="1.5"/>
+  <image x="417" y="705" width="246" height="246" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsAQMAAABDsxw2AAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB20lEQVRoge2aO7LCMAxFxaRImSWwFJaWLM1LYQmUFBmE9bP94BU0ghRXlZEP1R19HaLPbGU3ovlRf092EDed4+4KLBm7qhiTOB904Z2q2/nz3ZQClo/N1X9TjeQgzrlhp+ragX0RU7GUJ7sFdlxMbsvCLq7mN2Bfw1p+q85SD2qbOP9Pg8ASMOZBmrLslt9WCyI3YMnYi1VMbeX99QrYzzHT9OYBJfmNuYq7SYg1cYElY15TRBrtx8gPiwfVRprfgOViWtBvLs2Fo8RHftv8r8COgcVBQyw01d6gXkVkAUvFxEwjH1JqHJ2aRn/KDbA0rPdjNByaCR/5DVgaJlWmkKepEsuu1dYsArqmwA6ASX676C5F9pBLDzcx69CApWNdLCk3ul2R27dpBVgipjuuQh4gJZ5Ienu89FUYsDysIlri+W5FXw9uTTVgx8CklEhNYZ1NaFyFKW/jP7B0rNV6G1JUoxZZzD0AgeVg3QTzJ5K22vI+GdgxsNW163HE+hC/DO9ZRMCSMdNrssfEsgTfOjRTElgyplVmGt+zfDZRG9MgsC9hqsw8zIwaUsCOh8WAPy7nNfURsGws8ps6tU+Or+m01vvjI7BUjEORsw8p1CdE0fG9JQD2K+wzewJtlCQMk7P6PgAAAABJRU5ErkJggg==" />
+  <g text-anchor="middle">
+    <text x="540" y="1020" fill="#697354" font-family="Arial, sans-serif" font-size="17" letter-spacing="2.5">APONTE A CÂMERA E ABRA O CONVITE</text>
+    <text x="540" y="1065" fill="#373b30" font-family="Arial, sans-serif" font-size="22" letter-spacing=".4">https://thainaguilherme.siteslink.com.br/</text>
+    <path d="M510 1132h60" stroke="#c9cbbb" stroke-width="1.5"/>
+    <text x="540" y="1190" fill="#697354" font-family="Baskerville, 'Palatino Linotype', Georgia, serif" font-size="30" font-style="italic">T <tspan font-size="19">&amp;</tspan> G</text>
+    <text x="540" y="1230" fill="#77766b" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">THAINA &amp; GUILHERME</text>
+  </g>
+</svg>
