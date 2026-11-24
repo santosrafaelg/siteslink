@@ -1,7 +1,7 @@
 "use strict";
 
 // Para marcar um presente como indisponível: taken: true.
-// Presentes sem url aparecem como "Link em breve".
+// Presentes sem url ficam disponíveis para escolha sem link de loja.
 // URL do Google Apps Script (App da Web) que envia o e-mail de aviso aos noivos.
 // Enquanto estiver vazia, o botão "Já escolhi" não aparece.
 const giftNotifyUrl = "https://script.google.com/macros/s/AKfycbzlV6SmzRIzuMCi6V6n2qIdM80IsjAS4uKSHt3Xp7-82gMcGJ8HaKFuxf6SDtwEjdqx/exec";

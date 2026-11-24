@@ -124,9 +124,7 @@ function renderGifts() {
     const name = document.createElement("strong");
     name.textContent = gift.name;
     info.append(name);
-    const detail = gift.taken
-      ? "Já escolhido"
-      : gift.note || (gift.url ? "" : "Link em breve");
+    const detail = gift.taken ? "Já escolhido" : gift.note || "";
     if (detail) {
       const small = document.createElement("small");
       small.textContent = detail;
