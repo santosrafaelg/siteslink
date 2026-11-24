@@ -124,7 +124,9 @@ function renderGifts() {
     const name = document.createElement("strong");
     name.textContent = gift.name;
     info.append(name);
-    const detail = gift.taken ? "Já escolhido" : gift.note || "";
+    const detail = gift.taken
+      ? "Já escolhido"
+      : gift.note || (!gift.url ? "Escolha o modelo de sua preferência" : "");
     if (detail) {
       const small = document.createElement("small");
       small.textContent = detail;
@@ -134,16 +136,18 @@ function renderGifts() {
 
     if (gift.taken) {
       item.classList.add("is-taken");
-    } else if (gift.url) {
+    } else {
       const actions = document.createElement("div");
       actions.className = "gift-actions";
-      const store = document.createElement("a");
-      store.href = gift.url;
-      store.target = "_blank";
-      store.rel = "noopener noreferrer";
-      store.textContent = "Ver na loja";
-      store.setAttribute("aria-label", `Ver na loja: ${gift.name}`);
-      actions.append(store);
+      if (gift.url) {
+        const store = document.createElement("a");
+        store.href = gift.url;
+        store.target = "_blank";
+        store.rel = "noopener noreferrer";
+        store.textContent = "Ver na loja";
+        store.setAttribute("aria-label", `Ver na loja: ${gift.name}`);
+        actions.append(store);
+      }
       if (giftNotifyUrl) {
         const chosen = document.createElement("button");
         chosen.type = "button";
