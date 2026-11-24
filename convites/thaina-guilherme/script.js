@@ -115,6 +115,8 @@ async function notifyGift(gift, button) {
 }
 
 function renderGifts() {
+  if (!giftList) return;
+
   giftList.replaceChildren(...gifts.map((gift) => {
     const item = document.createElement("li");
     item.className = "gift-item";
