@@ -9,7 +9,7 @@ const giftNotifyUrl = "https://script.google.com/macros/s/AKfycbzlV6SmzRIzuMCi6V
 // Opcional: link CSV da planilha publicada (Arquivo > Compartilhar > Publicar na Web > CSV).
 // Colunas: presente | link | status | observacao. Status "indisponível" marca como escolhido.
 // Se vazio ou se falhar o carregamento, a lista abaixo é usada.
-const giftSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAO-ByvOjvy4FB8S_ClzHCN_pFXFdh36OKA4V-lVj8HBuzUbFCgys_iTHbFRFOwLCWQumeOEKlbESA/pub?gid=378027708&single=true&output=csv";
+const giftSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAO-ByvOjvy4FB8S_ClzHCN_pFXFdh36OKA4V-lVj8HBuzUbFCgys_iTHbFRFOwLCWQumeOEKlbESA/pub?gid=1443531489&single=true&output=csv";
 
 const gifts = [
   { name: "Organizador de sapatos", url: "https://br.shp.ee/5Jn8tG1K" },
