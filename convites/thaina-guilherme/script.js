@@ -126,7 +126,7 @@ function renderGifts() {
     info.append(name);
     const detail = gift.taken
       ? "Já escolhido"
-      : gift.note || (!gift.url ? "Escolha o modelo de sua preferência" : "");
+      : gift.note || (!gift.url ? "Escolha a loja/modelo de sua preferência" : "");
     if (detail) {
       const small = document.createElement("small");
       small.textContent = detail;
